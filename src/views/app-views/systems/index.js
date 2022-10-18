@@ -3,22 +3,21 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import Loading from "components/shared-components/Loading";
 import { APP_PREFIX_PATH } from "configs/AppConfig";
 
-export const AppViews = () => {
+export const Systems = () => {
   return (
     <Suspense fallback={<Loading cover="content" />}>
       <Switch>
         <Route
-          path={`${APP_PREFIX_PATH}/basic`}
-          component={lazy(() => import(`./basic`))}
-        />
-        <Route
           path={`${APP_PREFIX_PATH}/systems`}
-          component={lazy(() => import(`./systems`))}
+          component={lazy(() => import(`./logs`))}
         />
-        <Redirect from={`${APP_PREFIX_PATH}`} to={`${APP_PREFIX_PATH}/home`} />
+        <Redirect
+          from={`${APP_PREFIX_PATH}/systems`}
+          to={`${APP_PREFIX_PATH}/systems`}
+        />
       </Switch>
     </Suspense>
   );
 };
 
-export default React.memo(AppViews);
+export default React.memo(Systems);
