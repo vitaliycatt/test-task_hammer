@@ -23,7 +23,22 @@ const basicNavTree = [
         title: "sidenav.basic.catalog",
         icon: DashboardOutlined,
         breadcrumb: false,
-        submenu: [],
+        submenu: [
+          {
+            key: "basic-catalog-products",
+            path: `${APP_PREFIX_PATH}/basic/catalog/products`,
+            title: "sidenav.basic.catalog.products",
+            breadcrumb: false,
+            submenu: [],
+          },
+          {
+            key: "basic-catalog-categories",
+            path: `${APP_PREFIX_PATH}/basic/catalog/categories`,
+            title: "sidenav.basic.catalog.categories",
+            breadcrumb: false,
+            submenu: [],
+          },
+        ],
       },
       {
         key: "basic-clients",
@@ -31,7 +46,22 @@ const basicNavTree = [
         title: "sidenav.basic.clients",
         icon: DotChartOutlined,
         breadcrumb: false,
-        submenu: [],
+        submenu: [
+          {
+            key: "basic-clients-users-list",
+            path: `${APP_PREFIX_PATH}/basic/clients/users-list`,
+            title: "sidenav.basic.clients.users-list",
+            breadcrumb: false,
+            submenu: [],
+          },
+          {
+            key: "basic-clients-user",
+            path: `${APP_PREFIX_PATH}/basic/clients/user`,
+            title: "sidenav.basic.clients.user",
+            breadcrumb: false,
+            submenu: [],
+          },
+        ],
       },
     ],
   },

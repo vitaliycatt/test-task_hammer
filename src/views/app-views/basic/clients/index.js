@@ -1,28 +1,22 @@
-import React from "react";
-import axios from "axios";
-import { API_URL } from "constants/ApiConstant";
+import { Redirect, Route, Switch } from "react-router-dom";
+import { APP_PREFIX_PATH } from "configs/AppConfig";
+import UsersList from "./users-list";
+import User from "./user";
 
 const Clients = () => {
-  const [state, setState] = React.useState(null);
-
-  React.useEffect(() => {
-    axios.get(`${API_URL}/users`).then((response) => {
-      setState(response.data);
-    });
-  }, []);
-
-  console.log(state);
-  if (!state) return null;
-
   return (
-    <div>
-      <h1>Clients page!</h1>
-      <ul>
-        {state.map((user) => (
-          <li key={user.id}>{user.id}</li>
-        ))}
-      </ul>
-    </div>
+    <Switch>
+      <Redirect
+        exact
+        from={`${APP_PREFIX_PATH}/basic/clients`}
+        to={`${APP_PREFIX_PATH}/basic/clients/users-list`}
+      />
+      <Route
+        path={`${APP_PREFIX_PATH}/basic/clients/users-list`}
+        component={UsersList}
+      />
+      <Route path={`${APP_PREFIX_PATH}/basic/clients/user`} component={User} />
+    </Switch>
   );
 };
 

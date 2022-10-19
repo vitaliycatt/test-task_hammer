@@ -16,11 +16,11 @@ const Basic = () => (
       />
       <Route
         path={`${APP_PREFIX_PATH}/basic/clients`}
-        component={lazy(() => import(`./clients`))}
+        component={lazy(() => import(`./clients/users-list`))}
       />
       <Redirect
-        from={`${APP_PREFIX_PATH}/basic`}
-        to={`${APP_PREFIX_PATH}/basic`}
+        from={`${APP_PREFIX_PATH}/basic/home`}
+        to={`${APP_PREFIX_PATH}/basic/home`}
       />
     </Switch>
   </Suspense>
