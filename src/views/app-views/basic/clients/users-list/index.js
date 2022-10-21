@@ -1,11 +1,10 @@
 import React from "react";
 import "./styles.css";
 import axios from "axios";
-import { Redirect, Route, Switch } from "react-router-dom";
 import { APP_PREFIX_PATH } from "configs/AppConfig";
 import { API_URL } from "constants/ApiConstant";
+import { Link } from "react-router-dom";
 import Loading from "components/shared-components/Loading";
-import User from "../user";
 
 const UsersList = () => {
   const [state, setState] = React.useState(null);
@@ -51,23 +50,9 @@ const UsersList = () => {
             <td>{user.email}</td>
             <td>{user.address.city}</td>
             <td>
-              <button
-                onClick={() => (
-                  <Switch>
-                    <Redirect
-                      exact
-                      from={`${APP_PREFIX_PATH}/basic/clients/user`}
-                      to={`${APP_PREFIX_PATH}/basic/clients/user`}
-                    />
-                    <Route
-                      path={`${APP_PREFIX_PATH}/basic/clients/user`}
-                      component={User}
-                    />
-                  </Switch>
-                )}
-              >
+              <Link to={`${APP_PREFIX_PATH}/basic/clients/user/${user.id}`}>
                 Edit
-              </button>
+              </Link>
             </td>
           </tr>
         ))}

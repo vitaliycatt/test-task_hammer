@@ -7,8 +7,8 @@ const Basic = () => (
   <Suspense fallback={<Loading cover="content" />}>
     <Switch>
       <Route
-        path={`${APP_PREFIX_PATH}/basic/home`}
-        component={lazy(() => import(`./home`))}
+        path={`${APP_PREFIX_PATH}/basic/dashboard`}
+        component={lazy(() => import(`./dashboard`))}
       />
       <Route
         path={`${APP_PREFIX_PATH}/basic/catalog`}
@@ -16,11 +16,11 @@ const Basic = () => (
       />
       <Route
         path={`${APP_PREFIX_PATH}/basic/clients`}
-        component={lazy(() => import(`./clients/users-list`))}
+        component={lazy(() => import(`./clients`))}
       />
       <Redirect
-        from={`${APP_PREFIX_PATH}/basic/home`}
-        to={`${APP_PREFIX_PATH}/basic/home`}
+        from={`${APP_PREFIX_PATH}/basic/dashboard`}
+        to={`${APP_PREFIX_PATH}/basic/dashboard`}
       />
     </Switch>
   </Suspense>

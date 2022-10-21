@@ -1,7 +1,39 @@
 import React from "react";
-import { Form, Button, Input, DatePicker, Row, Col } from "antd";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import { Form, Button, Input, Row, Col } from "antd";
+import { API_URL } from "constants/ApiConstant";
+import Loading from "components/shared-components/Loading";
 
 const User = () => {
+  const [loading, setLoading] = React.useState(false);
+  const [user, setUser] = React.useState(null);
+
+  let { id } = useParams();
+
+  React.useEffect(() => {
+    setLoading(true);
+    axios.get(`${API_URL}/users/${id}`).then((response) => {
+      setUser(response.data);
+      setLoading(false);
+    });
+  }, []);
+
+  if (loading === true) {
+    return <Loading cover="page" />;
+  }
+
+  if (!user) return null;
+
+  const onSubmit = (values) => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      // Send data to API
+      console.log(values);
+    }, 1000);
+  };
+
   return (
     <React.Fragment>
       <h1>User page!</h1>
@@ -10,25 +42,30 @@ const User = () => {
         <Form
           name="basicInformation"
           layout="vertical"
-          //   initialValues={}
-          //   onFinish={onFinish}
-          //   onFinishFailed={onFinishFailed}
+          initialValues={{
+            name: user.name,
+            email: user.email,
+            username: user.username,
+            phoneNumber: user.phone,
+            website: user.website,
+            street: user.address.street,
+            city: user.address.city,
+          }}
+          onFinish={onSubmit}
         >
           <Row>
             <Col xs={24} sm={24} md={24} lg={16}>
-              <Row
-              //   gutter={ROW_GUTTER}
-              >
+              <Row>
                 <Col xs={24} sm={24} md={12}>
                   <Form.Item
                     label="Name"
                     name="name"
-                    // rules={[
-                    //   {
-                    //     required: true,
-                    //     message: "Please input your name!",
-                    //   },
-                    // ]}
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your name!",
+                      },
+                    ]}
                   >
                     <Input />
                   </Form.Item>
@@ -62,34 +99,25 @@ const User = () => {
                     <Input />
                   </Form.Item>
                 </Col>
-                <Col xs={24} sm={24} md={12}>
-                  <Form.Item label="Date of Birth" name="dateOfBirth">
-                    <DatePicker className="w-100" />
-                  </Form.Item>
-                </Col>
+
                 <Col xs={24} sm={24} md={12}>
                   <Form.Item label="Phone Number" name="phoneNumber">
-                    <Input />
+                    <Input placeholder="Input your phone number" />
                   </Form.Item>
                 </Col>
                 <Col xs={24} sm={24} md={12}>
                   <Form.Item label="Website" name="website">
-                    <Input />
-                  </Form.Item>
-                </Col>
-                <Col xs={24} sm={24} md={24}>
-                  <Form.Item label="Address" name="address">
-                    <Input />
+                    <Input placeholder="Input your website" />
                   </Form.Item>
                 </Col>
                 <Col xs={24} sm={24} md={12}>
                   <Form.Item label="City" name="city">
-                    <Input />
+                    <Input placeholder="Input your city" />
                   </Form.Item>
                 </Col>
-                <Col xs={24} sm={24} md={12}>
-                  <Form.Item label="Post code" name="postcode">
-                    <Input />
+                <Col xs={24} sm={24} md={24}>
+                  <Form.Item label="Street" name="street">
+                    <Input placeholder="Input your street" />
                   </Form.Item>
                 </Col>
               </Row>

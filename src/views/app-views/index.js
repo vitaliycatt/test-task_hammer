@@ -15,7 +15,10 @@ export const AppViews = () => {
           path={`${APP_PREFIX_PATH}/systems`}
           component={lazy(() => import(`./systems`))}
         />
-        <Redirect from={`${APP_PREFIX_PATH}`} to={`${APP_PREFIX_PATH}/home`} />
+        <Redirect
+          from={`${APP_PREFIX_PATH}`}
+          to={`${APP_PREFIX_PATH}/basic/dashboard`}
+        />
       </Switch>
     </Suspense>
   );

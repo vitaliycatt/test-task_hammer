@@ -10,9 +10,9 @@ const basicNavTree = [
     breadcrumb: false,
     submenu: [
       {
-        key: "basic-home",
-        path: `${APP_PREFIX_PATH}/basic/home`,
-        title: "home",
+        key: "basic-dashboard",
+        path: `${APP_PREFIX_PATH}/basic/dashboard`,
+        title: "sidenav.basic.dashboard",
         icon: DashboardOutlined,
         breadcrumb: false,
         submenu: [],

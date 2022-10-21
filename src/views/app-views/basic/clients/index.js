@@ -15,7 +15,10 @@ const Clients = () => {
         path={`${APP_PREFIX_PATH}/basic/clients/users-list`}
         component={UsersList}
       />
-      <Route path={`${APP_PREFIX_PATH}/basic/clients/user`} component={User} />
+      <Route
+        path={`${APP_PREFIX_PATH}/basic/clients/user/:id`}
+        component={User}
+      />
     </Switch>
   );
 };

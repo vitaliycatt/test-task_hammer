@@ -1,7 +1,6 @@
 {
-  "home": "Home",
-
   "sidenav.basic": "Basic",
+  "sidenav.basic.dashboard": "Dashboard",
   "sidenav.basic.clients": "Clients",
   "sidenav.basic.catalog": "Catalog",
   "sidenav.basic.catalog.products": "Products",

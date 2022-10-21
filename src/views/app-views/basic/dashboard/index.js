@@ -1,11 +1,11 @@
 import React from "react";
 
-const Home = () => {
+const Dashboard = () => {
   return (
     <React.Fragment>
-      <h1>Home page!</h1>
+      <h1>Dashboard page!</h1>
     </React.Fragment>
   );
 };
 
-export default Home;
+export default Dashboard;
