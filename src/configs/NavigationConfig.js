@@ -54,13 +54,6 @@ const basicNavTree = [
             breadcrumb: false,
             submenu: [],
           },
-          {
-            key: "basic-clients-user",
-            path: `${APP_PREFIX_PATH}/basic/clients/user`,
-            title: "sidenav.basic.clients.user",
-            breadcrumb: false,
-            submenu: [],
-          },
         ],
       },
     ],
